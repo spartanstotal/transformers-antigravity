@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 2%;
+    --foreground: 0 0% 98%;
+    --primary: 190 90% 50%;
+    --primary-foreground: 190 15% 10%;
+    --muted-foreground: 215 15% 50%;
+    --border: 215 20% 12%;
+    --radius: 0px;
+
+    --tf-cyan: 190 90% 50%;
+    --tf-cyan-soft: 190 80% 20%;
+    --tf-steel: 215 15% 25%;
+    --tf-warning: 45 100% 50%;
+
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground;
+    background: transparent;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .container-page {
+    @apply max-w-[1320px] mx-auto px-6 md:px-8 lg:px-12 w-full;
+  }
+  .text-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+  .text-body {
+    font-family: var(--font-body);
+  }
+  .cyan-glow {
+    filter: drop-shadow(0 0 8px hsl(var(--tf-cyan)));
+  }
+  .glass-metal {
+    @apply backdrop-blur-xl bg-black/40 border border-white/5 shadow-[0_0_20px_rgba(0,191,255,0.05)];
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .hover-industrial {
+    @apply transition-all duration-500 ease-out;
+  }
+  .hover-industrial:hover {
+    transform: translateZ(30px);
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  .scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    position: absolute;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,229,255,0.1) 50%, rgba(0,0,0,0) 100%);
+    opacity: 0.4;
+    animation: scanline 8s linear infinite;
+  }
+}
